@@ -3,7 +3,7 @@
 	"extends": ["tslint:all", "tslint-immutable/all", "tslint-config-prettier"],
 	"rules": {
 		"completed-docs": false,
-		"file-name-casing": false,
+		"file-name-casing": [],
 		"interface-name": [true, "never-prefix"],
 		// Better to have functionally similar items be close together.
 		"member-ordering": false,
@@ -28,5 +28,6 @@
 		"strict-type-predicates": false,
 		// We need private class properties to start with an underscore.
 		"variable-name": [true, "allow-leading-underscore"]
-	}
+	},
+	"linterOptions": { "exclude": ["framework"] }
 }

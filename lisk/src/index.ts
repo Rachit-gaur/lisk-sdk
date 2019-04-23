@@ -1,13 +1,10 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import { Application, helpers } from 'lisk-framework';
+import path from 'path';
 
-const {
-	Application,
-	helpers: { validator },
-	/* eslint-disable import/no-unresolved */
-} = require('lisk-framework');
+import * as packageJSON from '../package.json';
 
-const packageJSON = require('../package');
+const { validator } = helpers;
 
 const appConfig = {
 	app: {
@@ -53,13 +50,14 @@ try {
 		{}
 	);
 
-	/* eslint-disable import/no-dynamic-require */
 	let customConfig = {};
 	// TODO: I would convert config.json to .JS
+	// tslint:disable no-var-requires
 	const networkConfig = require(`../config/${NETWORK}/config`);
 	// TODO: Merge constants and exceptions with the above config.
 	const exceptions = require(`../config/${NETWORK}/exceptions`);
 	const genesisBlock = require(`../config/${NETWORK}/genesis_block`);
+	// tslint:enable no-var-requires
 
 	if (CUSTOM_CONFIG_FILE) {
 		customConfig = JSON.parse(
@@ -68,6 +66,7 @@ try {
 	}
 
 	// To run multiple applications for same network for integration tests
+
 	const appName = config =>
 		`lisk-${NETWORK}-${config.modules.http_api.httpPort}`;
 

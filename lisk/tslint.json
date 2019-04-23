@@ -1,0 +1,18 @@
+{
+	"extends": "../tslint.json",
+	"rules": {
+		"member-access": false,
+		"no-default-export": false,
+		"no-reference": false,
+		// TODO: Remove below
+		"no-inferred-empty-object-type": false,
+		"no-unnecessary-type-assertion": false,
+
+		"no-null-keyword": false,
+		"no-let": false,
+		"no-console": false
+	},
+	"linterOptions": {
+		"exclude": ["**/*.json"]
+	}
+}

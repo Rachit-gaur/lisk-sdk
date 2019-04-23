@@ -28,9 +28,11 @@
 	"scripts": {
 		"start": "node src/index.js",
 		"console": "node scripts/console.js",
-		"lint": "eslint .",
-		"lint:fix": "eslint --fix .",
+		"lint": "tslint --format verbose --project .",
+		"lint:fix": "tslint --fix --format codeFrame --project .",
 		"format": "prettier --write \"./*.{js,json,md}\" \"{api,config,docs,helpers,logic,modules,schema,scripts,storage,tasks,test}{,/**}/*.{js,json,md}\"",
+		"prebuild": "if test -d dist; then rm -r dist; fi",
+		"build": "tsc",
 		"test": "mocha test"
 	},
 	"dependencies": {
@@ -50,13 +52,6 @@
 		"chai-as-promised": "7.1.1",
 		"co-mocha": "1.2.2",
 		"coveralls": "3.0.2",
-		"eslint": "5.12.0",
-		"eslint-config-airbnb-base": "13.1.0",
-		"eslint-config-lisk-base": "1.1.0",
-		"eslint-plugin-chai-expect": "2.0.1",
-		"eslint-plugin-import": "2.14.0",
-		"eslint-plugin-jest": "22.3.0",
-		"eslint-plugin-mocha": "5.3.0",
 		"faker": "4.1.0",
 		"find": "0.2.9",
 		"http-server": "0.11.1",
@@ -73,7 +68,10 @@
 		"sinon": "7.2.2",
 		"sinon-chai": "3.3.0",
 		"stampit": "4.2.0",
-		"supertest": "3.3.0"
+		"supertest": "3.3.0",
+		"tslint": "5.16.0",
+		"tslint-config-prettier": "1.18.0",
+		"typescript": "3.4.4"
 	},
 	"lisk": {
 		"minVersion": "1.1.0-rc.0",
